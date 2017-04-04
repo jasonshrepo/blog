@@ -1,34 +1,34 @@
 # Basic
-title: 潘柏信
-subtitle: 个人站
-description: 欢迎来到我的个人站~
+title: Jason's Study
+subtitle: Personal Blog
+description: Welcome to my personal blog
 # 头像里面的标题
-avatarTitle: leopardpan
+avatarTitle: Jason
 # 头像里面的描述
-avatarDesc: iOS / 机器学习
-url: "http://baixin.io"
+avatarDesc: Cloud / Ruby / Devops
+url: "http://blog.timetxt.com"
+
+destination: blog
 
 # Comment
 comment:
     # disqus: leopard
-    duoshuo: leopard 
+    duoshuo: Jason 
 
 # Social
 social:
-    weibo: 5366874726 
-    github: leopardpan
-    # twitter: 
-    mail: leopardpan@icloud.com
-
+    github: jasonshrepo
+    mail: jasonsh@timetxt.com
+ 
 # 百度统计 
 # 使用博客模板请去掉或者更换 id 
-baidu:
-    id: 8ba1c6be0953b6f9c2ba38e57f615421  
+#baidu:
+#    id: 8ba1c6be0953b6f9c2ba38e57f615421  
 
 # Google Analytics
 # 使用博客模板请去掉或者更换 id
 ga:
-    id: UA-84134159-3   
+    id: UA-96761074-1
     host: auto  
 
 
@@ -53,13 +53,13 @@ cover_color: clear
 
 # The blog button should not be removed.
 blog_button:
-    title: 博客主页
+    title: Blog
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: 所有文章, description: archive, url: '/archive'}   
-    - {title: 标签, description: tags, url: '/tags'}      
-    - {title: 关于我, description: about, url: '/about'}      
+    - {title: All Articals, description: archive, url: '/archive'}   
+    - {title: tags, description: tags, url: '/tags'}      
+    - {title: About me, description: about, url: '/about'}      
     
 
 # Pagination
