@@ -1,7 +1,7 @@
 # Basic
 title: Jason's Study
 subtitle: Personal Blog
-description: Welcome to my personal blog
+description: Welcome To My Study
 # 头像里面的标题
 avatarTitle: Jason
 # 头像里面的描述
@@ -57,8 +57,9 @@ blog_button:
 
 # Navigation buttons in the front page.s
 nav:
+    - {title: Main, description: main page, url: '/'}
     - {title: All Articals, description: archive, url: '/archive'}   
-    - {title: tags, description: tags, url: '/tags'}      
+    - {title: Tags, description: tags, url: '/tags'}      
     - {title: About me, description: about, url: '/about'}      
     
 
