@@ -5,9 +5,90 @@
     <description>Welcome To My Study</description>
     <link>http://blog.timetxt.com/</link>
     <atom:link href="http://blog.timetxt.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 01:03:25 +1000</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 01:03:25 +1000</lastBuildDate>
+    <pubDate>Thu, 06 Apr 2017 16:49:44 +1000</pubDate>
+    <lastBuildDate>Thu, 06 Apr 2017 16:49:44 +1000</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Cron Job with Jekyll</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+Cron Job With Jekyll
+===
+&lt;br /&gt;&lt;br /&gt;Yesterday I tried to make Jekyll publish the running result of my lotto script automatically on default time. However I was not able to accomplish that because when I put the ‘jekyll build’ in my script, error message jumped up:
+&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;jekyll_build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;sx&quot;&gt;%x(jekyll build)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;My first error message&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;No such file or directory - jekyll &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Errno::ENOENT&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;then I modified the script&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;jekyll_build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;sx&quot;&gt;%x('&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;/jekyll build')&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;then I got a new error message&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sh: /my/blog/path/jekyll build: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;So I thought maybe I should locate where the jekyll is, so I modified my script again&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;jekyll_build&lt;/span&gt;
+    &lt;span class=&quot;sx&quot;&gt;%x(/home/user/.rvm/gems/ruby-2.3.3/wrappers/jekyll build -s /opt/project/blog -d /opt/project/blog/blog)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then I have the following message:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sh: /home/jason/.rvm/gems/ruby-2.3.3/wrappers/jekyll build -s /opt/project/blog -d /opt/project/blog/blog: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;so I give it up, I turned to write a bash script and made it like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+
+/home/jason/.rvm/gems/ruby-2.3.3/wrappers/jekyll build -s /opt/project/blog -d /opt/project/blog/blog &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;I use ‘/dev/null 2&amp;gt;&amp;amp;1’ because ‘jekyll build’ will give you some message which will cause cron to put those into the following path: /var/spool/mail/yourusername.&lt;/p&gt;
+
+&lt;p&gt;so finally, I moveded the ‘jekyll build’ to a seperated script and made the following cron job:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0 20 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 1,3,5 /home/jason/.rvm/rubies/ruby-2.3.3/bin/ruby /opt/project/AULOTTO/nsw-lotto.rb -g 1 -t 3 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; /bin/sh /opt/project/AULOTTO/jekyllbuild.sh
+0 20 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 2 /home/jason/.rvm/rubies/ruby-2.3.3/bin/ruby /opt/project/AULOTTO/nsw-lotto.rb -g 1 -t 2 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; /bin/sh /opt/project/AULOTTO/jekyllbuild.sh 
+0 20 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 4 /home/jason/.rvm/rubies/ruby-2.3.3/bin/ruby /opt/project/AULOTTO/nsw-lotto.rb -g 1 -t 1 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; /bin/sh /opt/project/AULOTTO/jekyllbuild.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Everything is working properly now!&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 06 Apr 2017 00:00:00 +1000</pubDate>
+        <link>http://blog.timetxt.com/2017/04/Cron_Job_With_Jekyll/</link>
+        <guid isPermaLink="true">http://blog.timetxt.com/2017/04/Cron_Job_With_Jekyll/</guid>
+        
+        <category>cron</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Comment Function Is Temperarily Removed</title>
+        <description>&lt;p&gt;Because the javascript of comment system from doushuo.com will be not be avaliable from 2017-06-01, and I am not a fan of Disqus comment system.
+So I decided to temperarily remove the comment function on this blog.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Apr 2017 00:00:00 +1000</pubDate>
+        <link>http://blog.timetxt.com/2017/04/Comment_Function_Removed/</link>
+        <guid isPermaLink="true">http://blog.timetxt.com/2017/04/Comment_Function_Removed/</guid>
+        
+        <category>comment</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello World!</title>

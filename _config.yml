@@ -60,6 +60,7 @@ nav:
     - {title: Main, description: main page, url: '/'}
     - {title: All Articals, description: archive, url: '/archive'}   
     - {title: Tags, description: tags, url: '/tags'}      
+    - {title: Useful Links, description: useful, url: '/useful'}
     - {title: About me, description: about, url: '/about'}      
     
 

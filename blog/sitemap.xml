@@ -5,6 +5,14 @@
 <lastmod>2017-04-04T00:00:00+10:00</lastmod>
 </url>
 <url>
+<loc>http://blog.timetxt.com/2017/04/Comment_Function_Removed/</loc>
+<lastmod>2017-04-06T00:00:00+10:00</lastmod>
+</url>
+<url>
+<loc>http://blog.timetxt.com/2017/04/Cron_Job_With_Jekyll/</loc>
+<lastmod>2017-04-06T00:00:00+10:00</lastmod>
+</url>
+<url>
 <loc>http://blog.timetxt.com/404.html</loc>
 </url>
 <url>
@@ -18,5 +26,8 @@
 </url>
 <url>
 <loc>http://blog.timetxt.com/tags/</loc>
+</url>
+<url>
+<loc>http://blog.timetxt.com/useful/</loc>
 </url>
 </urlset>
